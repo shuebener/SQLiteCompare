@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="820"
+   height="900"
+   id="svg4646"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   version="1.0"
+   sodipodi:docname="home_screenshot.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:export-filename="C:\Projects\SQLiteWebSite\Tests\Test1\Images\Screenshots\diff_view.png"
+   inkscape:export-xdpi="35.560974"
+   inkscape:export-ydpi="35.560974">
+  <defs
+     id="defs4648">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective4654" />
+    <inkscape:perspective
+       id="perspective5041"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective7042"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <pattern
+       patternUnits="userSpaceOnUse"
+       width="1220"
+       height="905"
+       patternTransform="translate(-784.28564,-64.423523)"
+       id="pattern7048">
+      <image
+         xlink:href="C:\Projects\SQLiteWebSite\Tests\Test1\Images\Screenshots\diff_view.png"
+         sodipodi:absref="C:\Projects\SQLiteWebSite\Tests\Test1\Images\Screenshots\diff_view.png"
+         width="1220"
+         height="905"
+         id="image7044"
+         x="0"
+         y="0" />
+    </pattern>
+    <inkscape:perspective
+       id="perspective7135"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective7327"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <filter
+       inkscape:collect="always"
+       id="filter7390">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="13.259724"
+         id="feGaussianBlur7392" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="310.20944"
+     inkscape:cy="441.91201"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="662"
+     inkscape:window-height="667"
+     inkscape:window-x="408"
+     inkscape:window-y="351" />
+  <metadata
+     id="metadata4651">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(213.45798,228.47248)">
+    <path
+       sodipodi:nodetypes="ccccc"
+       id="path7364"
+       d="M -213.63075,-133.50716 L 579.10629,-229.22136 L 584.82057,630.77497 L -212.38133,587.92341 L -213.63075,-133.50716 z"
+       style="opacity:1;fill:#505050;fill-opacity:1;stroke:none;stroke-width:1.48000002;stroke-miterlimit:4;stroke-opacity:1;filter:url(#filter7390)"
+       transform="matrix(0.9999992,1.2928412e-3,-1.2928412e-3,0.9999992,12.571429,22.857143)"
+       inkscape:export-filename="C:\Projects\SQLiteWebSite\Tests\Test1\Images\Screenshots\diff_view.png"
+       inkscape:export-xdpi="30.469999"
+       inkscape:export-ydpi="30.469999" />
+    <path
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.48000002;stroke-miterlimit:4;stroke-opacity:1"
+       d="M -200.88655,-110.9261 L 591.9736,-205.61534 L 596.57604,654.38769 L -200.56982,610.50551 L -200.88655,-110.9261 z"
+       id="rect7361"
+       sodipodi:nodetypes="ccccc"
+       inkscape:export-filename="C:\Projects\SQLiteWebSite\Tests\Test1\Images\Screenshots\diff_view.png"
+       inkscape:export-xdpi="30.469999"
+       inkscape:export-ydpi="30.469999" />
+    <image
+       y="-190.62634"
+       x="-188.86952"
+       id="image7329"
+       height="829"
+       width="772"
+       sodipodi:absref="C:\Projects\SQLiteWebSite\Tests\Test1\Images\Screenshots\diff_view_modified.png"
+       xlink:href="C:\Projects\SQLiteWebSite\Tests\Test1\Images\Screenshots\diff_view_modified.png"
+       inkscape:export-filename="C:\Projects\SQLiteWebSite\Tests\Test1\Images\Screenshots\diff_view.png"
+       inkscape:export-xdpi="30.469999"
+       inkscape:export-ydpi="30.469999" />
+  </g>
+</svg>

@@ -1,0 +1,420 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{16ADD088-AE2A-4D2D-B66C-00ED4D94EC3D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SQLiteTurbo</RootNamespace>
+    <AssemblyName>SQLiteCompare</AssemblyName>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;DEMO_VERSION</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;DEMO_VERSION</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Puzzle.SyntaxBox.NET3.5, Version=1.4.10.17604, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Puzzle.SyntaxBox.NET3.5.dll</HintPath>
+    </Reference>
+    <Reference Include="ShiftReduceParser, Version=0.0.0.0, Culture=neutral, PublicKeyToken=ff8fabef79b9cbb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ShiftReduceParser.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.61.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SolutionInfo.cs">
+      <Link>Properties\SolutionInfo.cs</Link>
+    </Compile>
+    <Compile Include="AboutDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutDialog.Designer.cs">
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbstractWorker.cs" />
+    <Compile Include="BlobCompareWorker.cs" />
+    <Compile Include="BlobCopier.cs" />
+    <Compile Include="BlobLoader.cs" />
+    <Compile Include="BlobReaderWriter.cs" />
+    <Compile Include="BlobSaver.cs" />
+    <Compile Include="CellValueEditorDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CellValueEditorDialog.Designer.cs">
+      <DependentUpon>CellValueEditorDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeScriptBuilder.cs" />
+    <Compile Include="CheckUpdatesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CheckUpdatesDialog.Designer.cs">
+      <DependentUpon>CheckUpdatesDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompareDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompareDialog.Designer.cs">
+      <DependentUpon>CompareDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompareWorker.cs">
+    </Compile>
+    <Compile Include="CompareParams.cs" />
+    <Compile Include="Configuration.cs" />
+    <Compile Include="ChangeScriptDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeScriptDialog.Designer.cs">
+      <DependentUpon>ChangeScriptDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DiffExporter.cs" />
+    <Compile Include="EtchedLine.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExportChangesDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportChangesDialog.Designer.cs">
+      <DependentUpon>ExportChangesDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeedbackDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FeedbackDialog.Designer.cs">
+      <DependentUpon>FeedbackDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FirstTimeDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FirstTimeDialog.Designer.cs">
+      <DependentUpon>FirstTimeDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HttpPostSenderDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HttpPostSenderDialog.Designer.cs">
+      <DependentUpon>HttpPostSenderDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IndefiniteProgressDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IndefiniteProgressDialog.Designer.cs">
+      <DependentUpon>IndefiniteProgressDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IWorker.cs" />
+    <Compile Include="ItemCopier.cs" />
+    <Compile Include="LicenseManager.cs" />
+    <Compile Include="LicenseRegistrationDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LicenseRegistrationDialog.Designer.cs">
+      <DependentUpon>LicenseRegistrationDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocalUserFileAppender.cs" />
+    <Compile Include="MailSender.cs" />
+    <Compile Include="PostSubmitter.cs" />
+    <Compile Include="ProgressDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgressDialog.Designer.cs">
+      <DependentUpon>ProgressDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="ProgressEventArgs.cs" />
+    <EmbeddedResource Include="AboutDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AboutDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CellValueEditorDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CellValueEditorDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckUpdatesDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CheckUpdatesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompareDialog.resx">
+      <DependentUpon>CompareDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeScriptDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ChangeScriptDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportChangesDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ExportChangesDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeedbackDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FeedbackDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FirstTimeDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FirstTimeDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HttpPostSenderDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>HttpPostSenderDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IndefiniteProgressDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>IndefiniteProgressDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LicenseRegistrationDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>LicenseRegistrationDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressDialog.resx">
+      <DependentUpon>ProgressDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SchemaComparisonView.resx">
+      <DependentUpon>SchemaComparisonView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchDataRowsDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SearchDataRowsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SoftwareUpdatesDetailsDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SoftwareUpdatesDetailsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpinningProgress.resx">
+      <DependentUpon>SpinningProgress.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TableDiffControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TableDiffControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TwoWayCompareEditDialog.resx">
+      <DependentUpon>TwoWayCompareEditDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <EmbeddedResource Include="sqlite.syn" />
+    <EmbeddedResource Include="UnexpectedErrorDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>UnexpectedErrorDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="RowsCopier.cs" />
+    <Compile Include="RowsDeleter.cs" />
+    <Compile Include="SchemaComparisonItem.cs" />
+    <Compile Include="SchemaComparisonView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SchemaComparisonView.Designer.cs">
+      <DependentUpon>SchemaComparisonView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SchemaObjectUpdater.cs" />
+    <Compile Include="ScrollableDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ScrollableTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SearchDataRowsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchDataRowsDialog.Designer.cs">
+      <DependentUpon>SearchDataRowsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchDataWorker.cs" />
+    <Compile Include="SelectionBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SendEmailWorker.cs" />
+    <Compile Include="SoftwareUpdatesDetailsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SoftwareUpdatesDetailsDialog.Designer.cs">
+      <DependentUpon>SoftwareUpdatesDetailsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpinningProgress.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SpinningProgress.Designer.cs">
+      <DependentUpon>SpinningProgress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SyncWorker.cs" />
+    <Compile Include="SyntaxRichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TableChangeItem.cs" />
+    <Compile Include="TableChanges.cs" />
+    <Compile Include="TableCompareWorker.cs" />
+    <Compile Include="TableDiffControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TableDiffControl.Designer.cs">
+      <DependentUpon>TableDiffControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TwoWayCompareEditDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TwoWayCompareEditDialog.Designer.cs">
+      <DependentUpon>TwoWayCompareEditDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UnexpectedErrorDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UnexpectedErrorDialog.Designer.cs">
+      <DependentUpon>UnexpectedErrorDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils.cs" />
+    <Compile Include="WebSiteUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AutomaticUpdates\AutomaticUpdates.csproj">
+      <Project>{34DD929F-BA21-4A80-AA93-114AFCC15EE7}</Project>
+      <Name>AutomaticUpdates</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Be.Windows.Forms.HexBox\Be.Windows.Forms.HexBox.csproj">
+      <Project>{26C5F25F-B450-4CAF-AD8B-B8D11AE73457}</Project>
+      <Name>Be.Windows.Forms.HexBox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{6CEE8102-55B6-42B8-AD74-2246AEB2D942}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DiffControl\DiffControl.csproj">
+      <Project>{310E7EA3-7370-4A28-9EA6-450B35E84C7C}</Project>
+      <Name>DiffControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FastGrid\FastGrid.csproj">
+      <Project>{B3501575-9F71-4574-99F5-6E6231AD8FD4}</Project>
+      <Name>FastGrid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Liron.Windows.Forms\Liron.Windows.Forms.csproj">
+      <Project>{1EB31359-E7F5-42ED-8794-49F53E1A9CF1}</Project>
+      <Name>Liron.Windows.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SQLiteParser\SQLiteParser.csproj">
+      <Project>{31E951ED-11C2-46AA-BE8C-6D954698549E}</Project>
+      <Name>SQLiteParser</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\feedback_pressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\feedback2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\feedback_problem_non_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\feedback_problem_selected.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\feedback_selected_question.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\feedback_non_selected_question.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\feedback_non_selected_idea.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\feedback_selected_idea.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\normal_feedback_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pressed_feedback_button.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

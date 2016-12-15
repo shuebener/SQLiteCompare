@@ -1,0 +1,148 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{31E951ED-11C2-46AA-BE8C-6D954698549E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SQLiteParser</RootNamespace>
+    <AssemblyName>SQLiteParser</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ShiftReduceParser, Version=0.0.0.0, Culture=neutral, PublicKeyToken=ff8fabef79b9cbb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ShiftReduceParser.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RefCompare.cs" />
+    <Compile Include="SQLiteBetweenExpression.cs" />
+    <Compile Include="SQLiteBinaryExpression.cs" />
+    <Compile Include="SQLiteCaseExpression.cs" />
+    <Compile Include="SQLiteCaseItem.cs" />
+    <Compile Include="SQLiteCastExpression.cs" />
+    <Compile Include="SQLiteCheckColumnConstraint.cs" />
+    <Compile Include="SQLiteCheckTableConstraint.cs" />
+    <Compile Include="SQLiteCollateColumnConstraint.cs" />
+    <Compile Include="SQLiteCollateExpression.cs" />
+    <Compile Include="SQLiteColumnConstraint.cs" />
+    <Compile Include="SQLiteColumnStatement.cs" />
+    <Compile Include="SQLiteColumnType.cs" />
+    <Compile Include="SQLiteCreateIndexStatement.cs" />
+    <Compile Include="SQLiteCreateTableStatement.cs" />
+    <Compile Include="SQLiteCreateTriggerStatement.cs" />
+    <Compile Include="SQLiteCreateViewStatement.cs" />
+    <Compile Include="SQLiteDdlMain.cs" />
+    <Compile Include="SQLiteDdlStatement.cs" />
+    <Compile Include="SQLiteDefaultColumnConstraint.cs" />
+    <Compile Include="SQLiteDeferColumnConstraint.cs" />
+    <Compile Include="SQLiteDeleteStatement.cs" />
+    <Compile Include="SQLiteDistinct.cs" />
+    <Compile Include="SQLiteExistsExpression.cs" />
+    <Compile Include="SQLiteFromClause.cs" />
+    <Compile Include="SQLiteFromIndexed.cs" />
+    <Compile Include="SQLiteFromInternalTable.cs" />
+    <Compile Include="SQLiteFromTable.cs" />
+    <Compile Include="SQLiteFunctionExpression.cs" />
+    <Compile Include="SQLiteExpression.cs" />
+    <Compile Include="SQLiteForeignKeyTableConstraint.cs" />
+    <Compile Include="SQLiteIdExpression.cs" />
+    <Compile Include="SQLiteIndexedColumn.cs" />
+    <Compile Include="SQLiteInExpression.cs" />
+    <Compile Include="SQLiteInsertPrefix.cs" />
+    <Compile Include="SQLiteInsertStatement.cs" />
+    <Compile Include="SQLiteJoinOperator.cs" />
+    <Compile Include="SQLiteLexer.cs" />
+    <Compile Include="SQLiteLikeExpression.cs" />
+    <Compile Include="SQLiteLikeOperator.cs" />
+    <Compile Include="SQLiteLimitClause.cs" />
+    <Compile Include="SQLiteMultiSelectStatement.cs" />
+    <Compile Include="SQLiteNameExpression.cs" />
+    <Compile Include="SQLiteNullColumnConstraint.cs" />
+    <Compile Include="SQLiteNullExpression.cs" />
+    <Compile Include="SQLiteObjectName.cs" />
+    <Compile Include="SQLiteOperator.cs" />
+    <Compile Include="SQLiteParser.cs" />
+    <Compile Include="SQLitePrimaryKeyColumnConstraint.cs" />
+    <Compile Include="SQLitePrimaryKeyTableConstraint.cs" />
+    <Compile Include="SQLiteRaiseExpression.cs" />
+    <Compile Include="SQLiteReferenceHandler.cs" />
+    <Compile Include="SQLiteReferencesColumnConstraint.cs" />
+    <Compile Include="SQLiteResolveAction.cs" />
+    <Compile Include="SQLiteSchema.cs" />
+    <Compile Include="SQLiteSelectColumn.cs" />
+    <Compile Include="SQLiteSelectExpression.cs" />
+    <Compile Include="SQLiteSelectOperator.cs" />
+    <Compile Include="SQLiteSelectStatement.cs" />
+    <Compile Include="SQLiteSingleSelectStatement.cs" />
+    <Compile Include="SQLiteSortItem.cs" />
+    <Compile Include="SQLiteStatement.cs" />
+    <Compile Include="SQLiteTableConstraint.cs" />
+    <Compile Include="SQLiteTerm.cs" />
+    <Compile Include="SQLiteTermExpression.cs" />
+    <Compile Include="SQLiteTriggerEventClause.cs" />
+    <Compile Include="SQLiteTriggerTime.cs" />
+    <Compile Include="SQLiteUnaryExpression.cs" />
+    <Compile Include="SQLiteUniqueColumnConstraint.cs" />
+    <Compile Include="SQLiteUniqueTableConstraint.cs" />
+    <Compile Include="SQLiteUpdateItem.cs" />
+    <Compile Include="SQLiteUpdateStatement.cs" />
+    <Compile Include="SQLiteVariableExpression.cs" />
+    <Compile Include="Utils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sqlite.lex" />
+    <None Include="sqlite.y" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PreBuildEvent>$(SolutionDir)gplex.exe /verbose /out:"$(ProjectDir)SQLiteLexer.cs" "$(ProjectDir)sqlite.lex"
+$(SolutionDir)gppg.exe /verbose /gplex /no-lines /conflicts $(ProjectDir)sqlite.y &gt; $(ProjectDir)SQLiteParser.cs</PreBuildEvent>
+  </PropertyGroup>
+</Project>

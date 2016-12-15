@@ -1,0 +1,103 @@
+
+[0.9.632.1]
+Release = 2009-07-10
+Bug(Minor) = blablabla
+Bug(Minor) = blablabal
+Bug(Minor) = blablabla
+Feature(Minor) = blablabla
+Feature(Minor) = blablabla
+
+[0.9.723.2]
+Release = 2009-07-11
+Bug(Minor) = blablabla
+Bug(Major) = blablabal
+Bug(Critical) = blablabla
+
+[0.9.834.3]
+Release = 2009-07-12
+Bug(Major) = Fixed wrong handling in the Change-Script generator dialog.
+Bug(Critical) = Fixed crash problem when opening file with wrong format.
+Feature(Minor) = Added support for data migration in the Change-Script generator dialog.
+
+[0.9.839.4]
+Release = 2009-07-12
+Bug(Minor) = changed 'Download' button to become disabled after the user clicks on it to begin downloading software updates.
+
+[0.9.840.5]
+Release = 2009-07-12
+Feature(minor) = added support for automatic software updates checks on software startup.
+
+[0.9.841.6]
+Release = 2009-07-12
+Bug(minor) = changed the 'Check Updates.." menu item to become disabled while checking for software updates on system startup. Otherwise - the user could crash the system if he/she tries to open the dialog during that time.
+
+[0.9.842.7]
+Release = 2009-07-12
+Bug(minor) = changed logging level from 'Error' to 'Warn' when automatic updates fail on startup.
+
+[0.9.843.8]
+Release = 2009-07-17
+Bug(major) = Trigger execution is now disabled while merging table data. Otherwise it may cause previous comparison results to become invalidated.
+Bug(major) = SQLite Compare used to crash when trying to open a database file that was already used by another application. It now checks for this and issues an appropriate error message.
+
+[2.3.843.8]
+Release = 2009-07-21
+Feature(minor) = changed version numbering scheme.
+
+[2.3.844.9]
+Release = 2009-08-11
+Bug(major) = Sometimes when comparing tables without primary key(s) but with BLOB fields, the comparison engine detected different rows that were actually equal.
+
+[2.3.845.10]
+Release = 2009-08-14
+Feature(minor) = added support for user feedback directly from the application.
+
+[2.3.846.11]
+Release = 2009-09-23
+Bug(major) = fixed support for 64 bit systems.
+
+[2.3.847.12]
+Release = 2009-09-24
+Feature(minor) = changed automatic updates to be enabled by default.
+
+[2.3.848.13]
+Release = 2009-09-30
+Feature(minor) = changed registration procedures.
+
+[2.3.849.14]
+Release = 2009-10-23
+Bug(major) = fixed critical bug that caused the software to crash sometimes when dragging the mouse in the schema view.
+
+[2.3.850.15]
+Release = 2009-11-06
+Feature(minor) = Added support for exporting the changes list to a CSV file that can be fed to EXCEL.
+Feature(minor) = Added support for drag and drop in the comparison dialog.
+
+[2.3.851.16]
+Release = 2009-11-09
+Bug(minor) = fixed small bug that caused the software to crash when no viewer is available for generated diff file.
+
+[2.3.852.17]
+Release = 2009-12-05
+Bug(major) = fixed a bug that caused the script generator to sometime create erroneous scripts when a table is dropped in the target database.
+
+[2.3.853.18]
+Release = 2009-12-06
+Bug(major) = fixed a bug in script generation code that caused table copying and trigger definitions to get errors. fixed crash in diff viewer.
+
+[2.3.854.19]
+Release = 2009-12-07
+Bug(major) = fixed a bug in script generation code that caused table copying errors.
+
+[2.3.855.20]
+Release = 2009-12-12
+Bug(major) = fixed a bug in the table difference view that caused the application to crash when double clicked and the table is empty.
+Bug(minor) = fixed VSplit cursor display in the table difference view (minor bug).
+
+[2.3.856.21]
+Release = 2009-12-12
+Bug(minor) = another small fix to the previous table difference view bug.
+
+[2.3.857.22]
+Release = 2010-01-29
+Bug(major) = fixed a bug that caused the app to crash sometimes when one table contained a column that did not exist in the other table.

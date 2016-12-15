@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="153"
+   height="57"
+   id="svg3263"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   version="1.0"
+   sodipodi:docname="installer_banner.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:export-filename="C:\Projects\SQLiteWebSite\Tests\Test2\Images\installer_banner.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs3265">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective3271" />
+    <inkscape:perspective
+       id="perspective7402"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.58"
+     inkscape:cx="198.38295"
+     inkscape:cy="35"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1680"
+     inkscape:window-height="1024"
+     inkscape:window-x="-4"
+     inkscape:window-y="164" />
+  <metadata
+     id="metadata3268">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:0.97000002;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:50;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2497"
+       width="153.36047"
+       height="56.541348"
+       x="0.18734649"
+       y="0.44186264"
+       inkscape:export-filename="C:\Projects\SQLiteWebSite\Tests\Test2\Images\installer_banner.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="opacity:0.97000002;fill:#d4aa00;stroke:none;stroke-width:4.48199987;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 3.2749857,49.369608 C 3.3650457,46.894052 3.3879157,46.847601 6.8855957,42.033634 C 8.8215757,39.369077 11.031276,36.460108 11.796046,35.569255 C 12.799636,34.400188 12.971906,34.037515 12.415166,34.265762 C 11.486546,34.646469 11.035646,33.378721 11.699506,32.253623 C 12.182316,31.435381 13.937996,31.28956 14.234806,32.043046 C 14.339536,32.308911 16.171106,30.906133 18.304986,28.925759 C 22.262566,25.252878 27.705756,21.108502 30.786856,19.422241 C 31.730296,18.9059 32.235486,18.467089 31.909486,18.447108 C 31.514556,18.422904 31.325126,18.011025 31.341836,17.212913 C 31.359656,16.362532 31.874296,15.467512 33.115936,14.127572 C 34.077886,13.089457 34.723886,12.166829 34.551496,12.077276 C 34.379106,11.987722 33.334836,12.366671 32.230896,12.919381 C 29.679156,14.19697 28.776606,14.171161 29.217356,13.398246 C 30.741916,10.724669 38.762876,7.0225942 38.511766,9.1085762 C 38.344276,10.499939 38.795516,11.742672 36.494116,14.100024 C 35.255116,15.369152 33.850046,16.875621 33.371756,17.447736 L 32.502126,18.487936 L 33.357176,18.143661 C 36.271736,16.970163 35.965396,18.436526 32.791786,20.849987 C 31.136416,22.10886 30.402166,22.873141 30.954246,22.762701 C 32.130706,22.527354 32.513766,23.806366 31.439526,24.382999 C 24.314826,28.207397 18.139056,34.312746 12.219566,43.383807 C 7.9945457,49.858291 6.1134057,51.924653 4.4767857,51.889048 L 3.1843457,51.860907 L 3.2749857,49.369608 z M 15.362096,40.281946 C 15.241676,39.774947 15.414576,39.196015 15.807966,38.788896 C 17.721816,38.124748 18.632056,38.445129 20.751296,37.092622 C 22.359636,36.000212 24.522936,34.724241 25.558616,34.25713 C 26.594286,33.790019 27.174966,33.389913 26.849006,33.368001 C 25.978436,33.309487 26.132346,32.734493 27.400906,31.306148 C 28.838876,29.687071 29.907126,28.883583 31.621846,28.131361 C 32.541616,27.727865 32.740876,27.5143 32.228966,27.480648 C 31.700286,27.445894 31.473376,27.123926 31.487936,26.42918 C 31.506586,25.539066 31.734896,25.432718 33.542806,25.472064 C 35.110496,25.506179 35.580256,25.346841 35.592196,24.776935 C 35.627796,23.07733 42.479256,17.033845 46.365016,15.274535 C 47.057686,14.960917 48.557756,13.850694 49.698496,12.807379 C 51.286356,11.355135 51.804986,10.589167 51.910846,9.5399752 C 52.151356,7.1562852 52.910846,7.5071852 52.859076,9.9780812 C 52.797846,12.901918 51.761426,14.257771 48.006736,16.326008 C 46.418656,17.20079 43.125436,19.605434 40.688466,21.669657 C 36.745356,25.009661 36.352556,25.460338 37.119996,25.763899 C 38.351226,26.250902 38.079416,28.15019 36.696516,28.723095 C 34.098376,29.799454 27.610126,33.009731 27.712576,33.168196 C 27.775526,33.265557 28.354466,33.135136 28.999096,32.878372 C 29.643726,32.62161 30.857976,32.456149 31.697446,32.510686 L 31.430806,32.849895 C 28.873076,33.531295 26.860546,35.877968 23.014786,38.588184 C 20.381156,40.544 16.450436,41.539471 15.362096,40.281946 z M 9.0809157,31.172779 C 8.5379357,30.586515 8.3543957,29.873211 8.3839157,28.4639 C 8.4299257,26.26751 8.8126157,25.692126 10.499256,25.283306 C 12.025936,24.91326 16.338436,22.016676 16.976876,20.932467 C 17.769536,19.586364 19.751396,20.065441 19.719356,21.595409 C 19.691766,22.912233 17.055686,28.870144 16.505936,28.858181 C 15.686066,28.840339 15.760476,26.580606 16.635576,24.920844 L 17.443336,23.388798 L 16.520306,24.416115 C 16.012636,24.981139 14.474196,25.934994 13.101546,26.535796 C 11.728896,27.136598 10.467386,27.801626 10.298186,28.013637 C 10.128986,28.22565 10.405356,28.949787 10.912316,29.622832 C 11.445186,30.330255 11.726066,31.090156 11.578066,31.423939 C 11.216536,32.239263 9.9507557,32.111951 9.0809157,31.172779 z M 21.582876,24.376926 C 21.209976,23.800185 21.403726,21.999606 21.947176,20.99141 C 22.761636,19.480476 22.574536,19.127599 21.409946,19.978158 C 20.635306,20.543925 20.237586,20.607677 19.978876,20.207551 C 19.203936,19.008971 25.015346,13.765393 27.069136,13.81009 C 28.752266,13.846716 28.607066,15.194774 26.660716,17.602088 C 25.692526,18.79958 24.408006,20.894472 23.806226,22.257398 C 22.789096,24.561043 22.116486,25.20224 21.582876,24.376926 z M 36.789666,16.180749 C 36.805116,15.443385 37.345376,14.966201 39.122006,14.120682 C 40.393736,13.51545 41.851106,12.787045 42.360616,12.501995 C 42.952646,12.170782 43.537236,12.156475 43.980306,12.462346 C 44.575346,12.87314 44.246416,13.205046 41.659156,14.804498 C 37.809546,17.184337 36.762446,17.480278 36.789666,16.180749 z M 38.497486,8.0763132 C 38.195136,7.3087262 38.826676,6.2981402 40.056416,5.5817262 C 41.480476,4.7520952 47.004556,5.2896512 48.661696,6.4191122 C 49.379556,6.9083892 49.878956,7.4328512 49.771466,7.5845802 C 49.663976,7.7363092 47.615256,7.8880262 45.218746,7.9217292 C 42.822246,7.9554322 40.380826,8.1341182 39.793376,8.3188012 C 39.111946,8.5330312 38.642806,8.4452452 38.497486,8.0763132 z"
+       id="path3225"
+       sodipodi:nodetypes="cssssssssssssssscccssssccccccsssssssssssssssssscccccssssscccssssccssssssccssssccsssssc"
+       inkscape:export-filename="C:\Projects\SQLiteWebSite\Tests\Test2\Images\installer_banner.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:10.9990406px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;opacity:0.97000002;fill:#aa4400;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bauhaus 93;-inkscape-font-specification:'Bauhaus 93,'"
+       x="74.455544"
+       y="23.324409"
+       id="text3270"
+       inkscape:export-filename="C:\Projects\SQLiteWebSite\Tests\Test2\Images\installer_banner.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan3272"
+         x="74.455544"
+         y="23.324409"
+         style="font-size:21.99808121px;fill:#aa4400">SQLite</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24.65298653px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#aa4400;fill-opacity:0.97254902;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bauhaus 93;-inkscape-font-specification:'Bauhaus 93,'"
+       x="26.356588"
+       y="49.966251"
+       id="text3269"><tspan
+         sodipodi:role="line"
+         id="tspan3271"
+         x="26.356588"
+         y="49.966251"> Compare</tspan></text>
+  </g>
+</svg>
