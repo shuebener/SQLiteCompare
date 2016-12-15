@@ -1,30 +1,12 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLiteTurbo", "SQLiteTurbo\SQLiteTurbo.csproj", "{16ADD088-AE2A-4D2D-B66C-00ED4D94EC3D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLiteParser", "SQLiteParser\SQLiteParser.csproj", "{31E951ED-11C2-46AA-BE8C-6D954698549E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateTestDatabases", "CreateTestDatabases\CreateTestDatabases.csproj", "{C21121C8-A6BA-4DA7-95C8-5AA57E165F6C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiffControl", "DiffControl\DiffControl.csproj", "{310E7EA3-7370-4A28-9EA6-450B35E84C7C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UndoRedo", "UndoRedo\UndoRedo.csproj", "{F71FACA5-08C3-40BA-AF53-B61291A6570C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastGrid", "FastGrid\FastGrid.csproj", "{B3501575-9F71-4574-99F5-6E6231AD8FD4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Be.Windows.Forms.HexBox", "Be.Windows.Forms.HexBox\Be.Windows.Forms.HexBox.csproj", "{26C5F25F-B450-4CAF-AD8B-B8D11AE73457}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Liron.Windows.Forms", "Liron.Windows.Forms\Liron.Windows.Forms.csproj", "{1EB31359-E7F5-42ED-8794-49F53E1A9CF1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{6CEE8102-55B6-42B8-AD74-2246AEB2D942}"
-EndProject
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{0C4D8682-3D2A-4367-AA71-020DFCEFA65E}"
 	ProjectSection(SolutionItems) = preProject
 		SolutionInfo.cs = SolutionInfo.cs
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomaticUpdates", "AutomaticUpdates\AutomaticUpdates.csproj", "{34DD929F-BA21-4A80-AA93-114AFCC15EE7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SVG", "SVG", "{827847D2-FD58-4A13-945D-D40A9D20D844}"
 	ProjectSection(SolutionItems) = preProject
@@ -74,6 +56,26 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SVG", "SVG", "{827847D2-FD5
 		SVG\uninstall.svg = SVG\uninstall.svg
 		SVG\v_bullet.svg = SVG\v_bullet.svg
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLiteTurbo", "SQLiteTurbo\SQLiteTurbo.csproj", "{16ADD088-AE2A-4D2D-B66C-00ED4D94EC3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQLiteParser", "SQLiteParser\SQLiteParser.csproj", "{31E951ED-11C2-46AA-BE8C-6D954698549E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateTestDatabases", "CreateTestDatabases\CreateTestDatabases.csproj", "{C21121C8-A6BA-4DA7-95C8-5AA57E165F6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiffControl", "DiffControl\DiffControl.csproj", "{310E7EA3-7370-4A28-9EA6-450B35E84C7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UndoRedo", "UndoRedo\UndoRedo.csproj", "{F71FACA5-08C3-40BA-AF53-B61291A6570C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastGrid", "FastGrid\FastGrid.csproj", "{B3501575-9F71-4574-99F5-6E6231AD8FD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Be.Windows.Forms.HexBox", "Be.Windows.Forms.HexBox\Be.Windows.Forms.HexBox.csproj", "{26C5F25F-B450-4CAF-AD8B-B8D11AE73457}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Liron.Windows.Forms", "Liron.Windows.Forms\Liron.Windows.Forms.csproj", "{1EB31359-E7F5-42ED-8794-49F53E1A9CF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{6CEE8102-55B6-42B8-AD74-2246AEB2D942}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomaticUpdates", "AutomaticUpdates\AutomaticUpdates.csproj", "{34DD929F-BA21-4A80-AA93-114AFCC15EE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
