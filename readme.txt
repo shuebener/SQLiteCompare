@@ -1,8 +1,18 @@
-SQLite Compare V2.5
+SQLite Compare is a database comparison and merge utility for Windows 7/8/10
+
+
+SQLite Compare V3.0
 ---------------------
 
-SQLite Compare is a database comparison and merge utility for Windows 2000/XP/2003
+  - Fork of SQLite-Compare-Utility (http://www.codeproject.com/Articles/220018/SQLite-Compare-Utility).
+  - Using .NET 4.6.
+  - Using NuGet library packages.
 
+  
+
+
+SQLite Compare V2.5
+---------------------
 
 Features: 
 

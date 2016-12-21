@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SQLite Compare")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Green Pine Software Ltd.")]
 [assembly: AssemblyProduct("SQLite Compare")]
-[assembly: AssemblyCopyright("Copyright Green Pine Software Ltd. © 2009")]
+[assembly: AssemblyTitle("SQLite Compare")]
+[assembly: AssemblyDescription("Utility for comparing two SQLite database files for both structure and data.")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("SCHMID Group | Gebr. SCHMID GmbH")]
+[assembly: AssemblyCopyright("Copyright © 2016 - SCHMID Group | Gebr. SCHMID GmbH")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f6fa1c58-42e0-452f-9646-2884b9112937")]
+[assembly: Guid("BD655607-78A1-471B-A296-BB55E33D878C")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("2.5.0.0")]
-[assembly: AssemblyFileVersion("2.5.0.0")]
+[assembly: AssemblyVersion("3.0.0.0")]
+[assembly: AssemblyFileVersion("3.0.0.0")]

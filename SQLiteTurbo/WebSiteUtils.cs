@@ -14,7 +14,7 @@ namespace SQLiteTurbo
 
         public static void OpenBugFeaturePage()
         {
-            OpenPage("http://sqlitecompare.com/Support.html");
+            OpenPage("https://github.com/shuebener/SQLiteCompare/issues");
         }
 
         public static void OpenUserGuidePage()

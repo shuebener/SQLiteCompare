@@ -241,6 +241,7 @@ namespace SQLiteTurbo
 			// 
 			// mniCheckForUpdates
 			// 
+			this.mniCheckForUpdates.Enabled = false;
 			this.mniCheckForUpdates.Image = ((System.Drawing.Image)(resources.GetObject("mniCheckForUpdates.Image")));
 			this.mniCheckForUpdates.Name = "mniCheckForUpdates";
 			this.mniCheckForUpdates.Size = new System.Drawing.Size(284, 22);

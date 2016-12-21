@@ -10,8 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SQLiteTurbo</RootNamespace>
     <AssemblyName>SQLiteCompare</AssemblyName>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>Resources\app.ico</ApplicationIcon>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -115,10 +114,10 @@
     <Compile Include="..\SolutionInfo.cs">
       <Link>Properties\SolutionInfo.cs</Link>
     </Compile>
-    <Compile Include="AboutDialog.cs">
+    <Compile Include="Forms\AboutDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AboutDialog.Designer.cs">
+    <Compile Include="Forms\AboutDialog.Designer.cs">
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="AbstractWorker.cs" />
@@ -127,144 +126,144 @@
     <Compile Include="BlobLoader.cs" />
     <Compile Include="BlobReaderWriter.cs" />
     <Compile Include="BlobSaver.cs" />
-    <Compile Include="CellValueEditorDialog.cs">
+    <Compile Include="Forms\CellValueEditorDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CellValueEditorDialog.Designer.cs">
+    <Compile Include="Forms\CellValueEditorDialog.Designer.cs">
       <DependentUpon>CellValueEditorDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="ChangeScriptBuilder.cs" />
-    <Compile Include="CheckUpdatesDialog.cs">
+    <Compile Include="Forms\CheckUpdatesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CheckUpdatesDialog.Designer.cs">
+    <Compile Include="Forms\CheckUpdatesDialog.Designer.cs">
       <DependentUpon>CheckUpdatesDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="CompareDialog.cs">
+    <Compile Include="Forms\CompareDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CompareDialog.Designer.cs">
+    <Compile Include="Forms\CompareDialog.Designer.cs">
       <DependentUpon>CompareDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="CompareWorker.cs">
     </Compile>
     <Compile Include="CompareParams.cs" />
     <Compile Include="Configuration.cs" />
-    <Compile Include="ChangeScriptDialog.cs">
+    <Compile Include="Forms\ChangeScriptDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChangeScriptDialog.Designer.cs">
+    <Compile Include="Forms\ChangeScriptDialog.Designer.cs">
       <DependentUpon>ChangeScriptDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="DiffExporter.cs" />
     <Compile Include="EtchedLine.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ExportChangesDialog.cs">
+    <Compile Include="Forms\ExportChangesDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ExportChangesDialog.Designer.cs">
+    <Compile Include="Forms\ExportChangesDialog.Designer.cs">
       <DependentUpon>ExportChangesDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="FeedbackDialog.cs">
+    <Compile Include="Forms\FeedbackDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FeedbackDialog.Designer.cs">
+    <Compile Include="Forms\FeedbackDialog.Designer.cs">
       <DependentUpon>FeedbackDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="FirstTimeDialog.cs">
+    <Compile Include="Forms\FirstTimeDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FirstTimeDialog.Designer.cs">
+    <Compile Include="Forms\FirstTimeDialog.Designer.cs">
       <DependentUpon>FirstTimeDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="HttpPostSenderDialog.cs">
+    <Compile Include="Forms\HttpPostSenderDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HttpPostSenderDialog.Designer.cs">
+    <Compile Include="Forms\HttpPostSenderDialog.Designer.cs">
       <DependentUpon>HttpPostSenderDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="IndefiniteProgressDialog.cs">
+    <Compile Include="Forms\IndefiniteProgressDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IndefiniteProgressDialog.Designer.cs">
+    <Compile Include="Forms\IndefiniteProgressDialog.Designer.cs">
       <DependentUpon>IndefiniteProgressDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="IWorker.cs" />
     <Compile Include="ItemCopier.cs" />
     <Compile Include="LicenseManager.cs" />
-    <Compile Include="LicenseRegistrationDialog.cs">
+    <Compile Include="Forms\LicenseRegistrationDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LicenseRegistrationDialog.Designer.cs">
+    <Compile Include="Forms\LicenseRegistrationDialog.Designer.cs">
       <DependentUpon>LicenseRegistrationDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="LocalUserFileAppender.cs" />
     <Compile Include="MailSender.cs" />
     <Compile Include="PostSubmitter.cs" />
-    <Compile Include="ProgressDialog.cs">
+    <Compile Include="Forms\ProgressDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProgressDialog.Designer.cs">
+    <Compile Include="Forms\ProgressDialog.Designer.cs">
       <DependentUpon>ProgressDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="ProgressEventArgs.cs" />
-    <EmbeddedResource Include="AboutDialog.resx">
+    <EmbeddedResource Include="Forms\AboutDialog.resx">
       <SubType>Designer</SubType>
       <DependentUpon>AboutDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CellValueEditorDialog.resx">
+    <EmbeddedResource Include="Forms\CellValueEditorDialog.resx">
       <SubType>Designer</SubType>
       <DependentUpon>CellValueEditorDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CheckUpdatesDialog.resx">
+    <EmbeddedResource Include="Forms\CheckUpdatesDialog.resx">
       <SubType>Designer</SubType>
       <DependentUpon>CheckUpdatesDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CompareDialog.resx">
+    <EmbeddedResource Include="Forms\CompareDialog.resx">
       <DependentUpon>CompareDialog.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChangeScriptDialog.resx">
+    <EmbeddedResource Include="Forms\ChangeScriptDialog.resx">
       <SubType>Designer</SubType>
       <DependentUpon>ChangeScriptDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ExportChangesDialog.resx">
+    <EmbeddedResource Include="Forms\ExportChangesDialog.resx">
       <SubType>Designer</SubType>
       <DependentUpon>ExportChangesDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FeedbackDialog.resx">
+    <EmbeddedResource Include="Forms\FeedbackDialog.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FeedbackDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FirstTimeDialog.resx">
+    <EmbeddedResource Include="Forms\FirstTimeDialog.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FirstTimeDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HttpPostSenderDialog.resx">
+    <EmbeddedResource Include="Forms\HttpPostSenderDialog.resx">
       <SubType>Designer</SubType>
       <DependentUpon>HttpPostSenderDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="IndefiniteProgressDialog.resx">
+    <EmbeddedResource Include="Forms\IndefiniteProgressDialog.resx">
       <SubType>Designer</SubType>
       <DependentUpon>IndefiniteProgressDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LicenseRegistrationDialog.resx">
+    <EmbeddedResource Include="Forms\LicenseRegistrationDialog.resx">
       <SubType>Designer</SubType>
       <DependentUpon>LicenseRegistrationDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProgressDialog.resx">
+    <EmbeddedResource Include="Forms\ProgressDialog.resx">
       <DependentUpon>ProgressDialog.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -277,11 +276,11 @@
       <DependentUpon>SchemaComparisonView.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="SearchDataRowsDialog.resx">
+    <EmbeddedResource Include="Forms\SearchDataRowsDialog.resx">
       <SubType>Designer</SubType>
       <DependentUpon>SearchDataRowsDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SoftwareUpdatesDetailsDialog.resx">
+    <EmbeddedResource Include="Forms\SoftwareUpdatesDetailsDialog.resx">
       <SubType>Designer</SubType>
       <DependentUpon>SoftwareUpdatesDetailsDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -293,7 +292,7 @@
       <SubType>Designer</SubType>
       <DependentUpon>TableDiffControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TwoWayCompareEditDialog.resx">
+    <EmbeddedResource Include="Forms\TwoWayCompareEditDialog.resx">
       <DependentUpon>TwoWayCompareEditDialog.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -309,7 +308,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <EmbeddedResource Include="sqlite.syn" />
-    <EmbeddedResource Include="UnexpectedErrorDialog.resx">
+    <EmbeddedResource Include="Forms\UnexpectedErrorDialog.resx">
       <SubType>Designer</SubType>
       <DependentUpon>UnexpectedErrorDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -334,10 +333,10 @@
     <Compile Include="ScrollableTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SearchDataRowsDialog.cs">
+    <Compile Include="Forms\SearchDataRowsDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SearchDataRowsDialog.Designer.cs">
+    <Compile Include="Forms\SearchDataRowsDialog.Designer.cs">
       <DependentUpon>SearchDataRowsDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="SearchDataWorker.cs" />
@@ -345,10 +344,10 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SendEmailWorker.cs" />
-    <Compile Include="SoftwareUpdatesDetailsDialog.cs">
+    <Compile Include="Forms\SoftwareUpdatesDetailsDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SoftwareUpdatesDetailsDialog.Designer.cs">
+    <Compile Include="Forms\SoftwareUpdatesDetailsDialog.Designer.cs">
       <DependentUpon>SoftwareUpdatesDetailsDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="SpinningProgress.cs">
@@ -370,16 +369,16 @@
     <Compile Include="TableDiffControl.Designer.cs">
       <DependentUpon>TableDiffControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="TwoWayCompareEditDialog.cs">
+    <Compile Include="Forms\TwoWayCompareEditDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TwoWayCompareEditDialog.Designer.cs">
+    <Compile Include="Forms\TwoWayCompareEditDialog.Designer.cs">
       <DependentUpon>TwoWayCompareEditDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="UnexpectedErrorDialog.cs">
+    <Compile Include="Forms\UnexpectedErrorDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UnexpectedErrorDialog.Designer.cs">
+    <Compile Include="Forms\UnexpectedErrorDialog.Designer.cs">
       <DependentUpon>UnexpectedErrorDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils.cs" />
