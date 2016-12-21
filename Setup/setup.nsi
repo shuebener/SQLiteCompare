@@ -16,7 +16,6 @@
 ;--------------------------------
 ;Constants
   !define PRODUCT_NAME "SQLite Compare"
-  !define COMPANY_NAME "Liron Levi"
   !define PRODUCT_DISPLAY_NAME "SQLite Compare - Diff/Merge Utility"
 
 ;--------------------------------
@@ -27,7 +26,7 @@
   OutFile "SQLiteCompareSetup.exe"
 
   ;Default installation folder
-  InstallDir "$PROGRAMFILES\${COMPANY_NAME}\SQLiteCompare"
+  InstallDir "$PROGRAMFILES\SQLiteCompare"
 
   ;Request application privileges for Windows Vista
   RequestExecutionLevel admin
@@ -60,8 +59,8 @@
     !define MUI_FINISHPAGE_RUN_FUNCTION "LaunchLink"
     !define MUI_FINISHPAGE_SHOWREADME_NOTCHECKED
     !define MUI_FINISHPAGE_SHOWREADME "$INSTDIR\readme.txt"
-    !define MUI_FINISHPAGE_LINK "http://www.linkedin.com/pub/liron-levy/1/578/ab5"
-    !define MUI_FINISHPAGE_LINK_LOCATION "http://www.linkedin.com/pub/liron-levy/1/578/ab5"
+    !define MUI_FINISHPAGE_LINK "https://github.com/shuebener/SQLiteCompare"
+    !define MUI_FINISHPAGE_LINK_LOCATION "https://github.com/shuebener/SQLiteCompare"
   !insertmacro MUI_PAGE_FINISH
 
   !insertmacro MUI_UNPAGE_CONFIRM
@@ -111,7 +110,8 @@ Section "Install" Install
   ; Get .NET if required
   ${If} $InstallDotNET == "Yes"
     SetDetailsView hide
-    inetc::get /caption "Downloading .NET Framework 2.0" /canceltext "Cancel" "http://download.microsoft.com/download/5/6/7/567758a3-759e-473e-bf8f-52154438565a/dotnetfx.exe" "$INSTDIR\dotnetfx.exe" /end
+    ;;inetc::get /caption "Downloading .NET Framework 2.0" /canceltext "Cancel" "http://download.microsoft.com/download/5/6/7/567758a3-759e-473e-bf8f-52154438565a/dotnetfx.exe" "$INSTDIR\dotnetfx.exe" /end
+	inetc::get /caption "Downloading .NET Framework 4.6.2" /canceltext "Cancel" "https://download.microsoft.com/download/F/9/4/F942F07D-F26F-4F30-B4E3-EBD54FABA377/NDP462-KB3151800-x86-x64-AllOS-ENU.exe" "$INSTDIR\dotnetfx.exe" /end	
     Pop $1
     ${If} $1 != "OK"
       Delete "$INSTDIR\dotnetfx.exe"
@@ -145,21 +145,32 @@ Section "Install" Install
   SetShellVarContext all
 
   ; Add the application files
-  File "..\SQLiteTurbo\bin\x86\Release\Puzzle.SyntaxBox.NET3.5.dll"
-  File "..\SQLiteTurbo\bin\x86\Release\System.Data.SQLite.dll"
-  File "..\SQLiteTurbo\bin\x86\Release\SQLiteCompare.exe.config"
-  File "..\SQLiteTurbo\bin\x86\Release\SQLiteCompare.exe"
-  File "..\SQLiteTurbo\bin\x86\Release\AutomaticUpdates.dll"
-  File "..\SQLiteTurbo\bin\x86\Release\Be.Windows.Forms.HexBox.dll"
-  File "..\SQLiteTurbo\bin\x86\Release\Common.dll"
-  File "..\SQLiteTurbo\bin\x86\Release\DiffControl.dll"
-  File "..\SQLiteTurbo\bin\x86\Release\FastGrid.dll"
-  File "..\SQLiteTurbo\bin\x86\Release\Liron.Windows.Forms.dll"
-  File "..\SQLiteTurbo\bin\x86\Release\log4net.dll"
-  File "..\SQLiteTurbo\bin\x86\Release\ShiftReduceParser.dll"
-  File "..\SQLiteTurbo\bin\x86\Release\SQLiteParser.dll"
-  File "..\SQLiteTurbo\bin\x86\Release\UndoRedo.dll"
+  File "..\SQLiteTurbo\bin\Release\Alsing.SyntaxBox.dll"
+  File "..\SQLiteTurbo\bin\Release\System.Data.SQLite.dll"
+  File "..\SQLiteTurbo\bin\Release\System.Data.SQLite.EF6.dll"
+  File "..\SQLiteTurbo\bin\Release\System.Data.SQLite.Linq.dll"
+  File "..\SQLiteTurbo\bin\Release\SQLiteCompare.exe.config"
+  File "..\SQLiteTurbo\bin\Release\SQLiteCompare.exe"
+  File "..\SQLiteTurbo\bin\Release\AutomaticUpdates.dll"
+  File "..\SQLiteTurbo\bin\Release\Be.Windows.Forms.HexBox.dll"
+  File "..\SQLiteTurbo\bin\Release\Common.dll"
+  File "..\SQLiteTurbo\bin\Release\DiffControl.dll"
+  File "..\SQLiteTurbo\bin\Release\FastGrid.dll"
+  File "..\SQLiteTurbo\bin\Release\MultiPanelControl.dll"
+  File "..\SQLiteTurbo\bin\Release\log4net.dll"
+  File "..\SQLiteTurbo\bin\Release\ShiftReduceParser.dll"
+  File "..\SQLiteTurbo\bin\Release\SQLiteParser.dll"
+  File "..\SQLiteTurbo\bin\Release\UndoRedo.dll"
+  File "..\SQLiteTurbo\bin\Release\EntityFramework.dll"
+  File "..\SQLiteTurbo\bin\Release\EntityFramework.SqlServer.dll"
   File "..\readme.txt"
+  File "..\LICENSE"
+  
+  SetOutPath "$INSTDIR\x64"
+  File "..\SQLiteTurbo\bin\Release\x64\SQLite.Interop.dll"
+  SetOutPath "$INSTDIR\x86"
+  File "..\SQLiteTurbo\bin\Release\x86\SQLite.Interop.dll"  
+  SetOutPath "$INSTDIR"
 
   ; Turn ON/OFF the check-updates flag
   WriteRegDWORD HKCU "SOFTWARE\SQLiteCompare" "CheckUpdatesOnStartup" 1
@@ -170,11 +181,11 @@ Section "Install" Install
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\SQLiteCompare" \
                  "DisplayIcon" "$\"$INSTDIR\uninstall.exe$\""
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\SQLiteCompare" \
-                 "Publisher" "Liron Levi"
+                 "Publisher" "Sebastian Huebener"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\SQLiteCompare" \
-                 "URLInfoAbout" "http://www.linkedin.com/pub/liron-levy/1/578/ab5"
+                 "URLInfoAbout" "https://github.com/shuebener/SQLiteCompare"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\SQLiteCompare" \
-                 "HelpLink" "http://www.linkedin.com/pub/liron-levy/1/578/ab5"
+                 "HelpLink" "https://github.com/shuebener/SQLiteCompare"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\SQLiteCompare" \
                  "UninstallString" "$\"$INSTDIR\uninstall.exe$\""
 
@@ -182,10 +193,10 @@ Section "Install" Install
   WriteUninstaller "$INSTDIR\Uninstall.exe"
 
   ; Create start menu shortcuts
-  CreateDirectory "$SMPROGRAMS\Liron Levi"
-  CreateShortCut "$SMPROGRAMS\Liron Levi\SQLite Compare.lnk" "$INSTDIR\SQLiteCompare.exe" \
+  CreateDirectory "$SMPROGRAMS\${PRODUCT_NAME}"
+  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\SQLite Compare.lnk" "$INSTDIR\SQLiteCompare.exe" \
   "" "$INSTDIR\SQLiteCompare.exe"
-  CreateShortCut "$SMPROGRAMS\Liron Levi\Uninstall.lnk" "$INSTDIR\Uninstall.exe" \
+  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Uninstall.lnk" "$INSTDIR\Uninstall.exe" \
   "" "$INSTDIR\Uninstall.exe"
 
   ; Create desktop shortcut
@@ -216,28 +227,35 @@ Section "Uninstall"
   SetShellVarContext all
 
   Delete "$INSTDIR\Uninstall.exe"
-  Delete "$INSTDIR\SQLiteCompare.exe"
-  Delete "$INSTDIR\Puzzle.SyntaxBox.NET3.5.dll"
+  Delete "$INSTDIR\Alsing.SyntaxBox.dll"
   Delete "$INSTDIR\System.Data.SQLite.dll"
-  Delete "$INSTDIR\readme.txt"
+  Delete "$INSTDIR\System.Data.SQLite.EF6.dll"
+  Delete "$INSTDIR\System.Data.SQLite.Linq.dll"
+  Delete "$INSTDIR\x64\SQLite.Interop.dll"
+  Delete "$INSTDIR\x86\SQLite.Interop.dll"
   Delete "$INSTDIR\SQLiteCompare.exe.config"
+  Delete "$INSTDIR\SQLiteCompare.exe"
   Delete "$INSTDIR\AutomaticUpdates.dll"
   Delete "$INSTDIR\Be.Windows.Forms.HexBox.dll"
   Delete "$INSTDIR\Common.dll"
   Delete "$INSTDIR\DiffControl.dll"
   Delete "$INSTDIR\FastGrid.dll"
-  Delete "$INSTDIR\Liron.Windows.Forms.dll"
+  Delete "$INSTDIR\MultiPanelControl.dll"
   Delete "$INSTDIR\log4net.dll"
   Delete "$INSTDIR\ShiftReduceParser.dll"
   Delete "$INSTDIR\SQLiteParser.dll"
   Delete "$INSTDIR\UndoRedo.dll"
+  Delete "$INSTDIR\EntityFramework.dll"
+  Delete "$INSTDIR\EntityFramework.SqlServer.dll"
+  Delete "$INSTDIR\readme.txt"
+  Delete "$INSTDIR\LICENSE"
 
   DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\SQLiteCompare"
 
   ; Delete start menu shortcuts
-  Delete "$SMPROGRAMS\Liron Levi\SQLite Compare.lnk"
-  Delete "$SMPROGRAMS\Liron Levi\Uninstall.lnk"
-  RMDir "$SMPROGRAMS\Liron Levi"
+  Delete "$SMPROGRAMS\${PRODUCT_NAME}\SQLite Compare.lnk"
+  Delete "$SMPROGRAMS\${PRODUCT_NAME}\Uninstall.lnk"
+  RMDir "$SMPROGRAMS\${PRODUCT_NAME}"
 
   ;Delete "$DESKTOP\SQLite Compare.lnk"
 
@@ -337,14 +355,15 @@ Label_ItIsWindowsNtPlatform:
   ; Check .NET version
   Call CheckDotNet
   ${If} $InstallDotNet == "Yes"
-    MessageBox MB_OK|MB_ICONINFORMATION "${PRODUCT_NAME} requires that the .NET Framework 2.0 is installed. The .NET Framework will be downloaded and installed automatically during installation of ${PRODUCT_NAME}."
+    MessageBox MB_OK|MB_ICONINFORMATION "${PRODUCT_NAME} requires that the .NET Framework 4.6 is installed. The .NET Framework will be downloaded and installed automatically during installation of ${PRODUCT_NAME}."
     Return
   ${EndIf}
 FunctionEnd
 
 Function CheckDotNet
   StrCpy $InstallDotNET "No"
-  ReadRegDWORD $0 HKLM 'SOFTWARE\Microsoft\NET Framework Setup\NDP\v2.0.50727' Install
+  ;ReadRegDWORD $0 HKLM 'SOFTWARE\Microsoft\NET Framework Setup\NDP\v2.0.50727' Install
+  ReadRegDWORD $0 HKLM 'SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full' Install
   ${If} $0 == ''
     StrCpy $InstallDotNET "Yes"
   ${EndIf}
@@ -352,5 +371,5 @@ Function CheckDotNet
 FunctionEnd
 
 Function LaunchLink
-  ExecShell "" "$SMPROGRAMS\Liron Levi\SQLite Compare.lnk"
+  ExecShell "" "$SMPROGRAMS\${PRODUCT_NAME}\SQLite Compare.lnk"
 FunctionEnd
