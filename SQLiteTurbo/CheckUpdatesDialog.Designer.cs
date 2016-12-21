@@ -29,17 +29,17 @@ namespace SQLiteTurbo
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CheckUpdatesDialog));
-            this.pnlContents = new Liron.Windows.Forms.MultiPanel();
-            this.pgCheckForUpdates = new Liron.Windows.Forms.MultiPanelPage();
+            this.pnlContents = new MultiPanel();
+            this.pgCheckForUpdates = new MultiPanelPage();
             this.pbrCheckProgress = new System.Windows.Forms.ProgressBar();
             this.lblCheckMessage = new System.Windows.Forms.Label();
-            this.pgDownloadUpdates = new Liron.Windows.Forms.MultiPanelPage();
+            this.pgDownloadUpdates = new MultiPanelPage();
             this.lblDownloadingUpdates = new System.Windows.Forms.Label();
             this.pbrDownloadProgress = new System.Windows.Forms.ProgressBar();
             this.btnDownloadUpdates = new System.Windows.Forms.Button();
             this.btnNewUpdatesDetails = new System.Windows.Forms.Button();
             this.lblNewUpdatesMessage = new System.Windows.Forms.Label();
-            this.pgConfirm = new Liron.Windows.Forms.MultiPanelPage();
+            this.pgConfirm = new MultiPanelPage();
             this.btnInstallUpdates = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -248,12 +248,12 @@ namespace SQLiteTurbo
 
         #endregion
 
-        private Liron.Windows.Forms.MultiPanel pnlContents;
-        private Liron.Windows.Forms.MultiPanelPage pgCheckForUpdates;
+        private MultiPanel pnlContents;
+        private MultiPanelPage pgCheckForUpdates;
         private EtchedLine etchedLine1;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.CheckBox cbxCheckUpdates;
-        private Liron.Windows.Forms.MultiPanelPage pgDownloadUpdates;
+        private MultiPanelPage pgDownloadUpdates;
         private System.Windows.Forms.Label lblCheckMessage;
         private System.Windows.Forms.ProgressBar pbrCheckProgress;
         private System.Windows.Forms.Label lblNewUpdatesMessage;
@@ -261,7 +261,7 @@ namespace SQLiteTurbo
         private System.Windows.Forms.Button btnNewUpdatesDetails;
         private System.Windows.Forms.ProgressBar pbrDownloadProgress;
         private System.Windows.Forms.Label lblDownloadingUpdates;
-        private Liron.Windows.Forms.MultiPanelPage pgConfirm;
+        private MultiPanelPage pgConfirm;
         private System.Windows.Forms.Button btnInstallUpdates;
         private System.Windows.Forms.Label label1;
 

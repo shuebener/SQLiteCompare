@@ -8,6 +8,7 @@ using System.Data.SQLite;
 using System.Reflection;
 using System.Diagnostics;
 using SQLiteParser;
+using System.Linq;
 
 namespace SQLiteTurbo
 {
@@ -32,9 +33,9 @@ namespace SQLiteTurbo
         /// SQLite file</returns>
         public static float GetSQLiteVersion(string fpath)
         {
-            int index = 0;
+			int index = 0;
             byte[] buffer = new byte[1024];
-            using (FileStream fs = File.Open(fpath, FileMode.Open, FileAccess.Read, FileShare.Read))
+            using (FileStream fs = File.Open(fpath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {                
                 int res = fs.ReadByte();
                 while (res != -1 && res != 0 && index<buffer.Length)
@@ -852,13 +853,13 @@ namespace SQLiteTurbo
                 SQLiteColumnStatement rpcol = rightpkeys[i];
                 if (!Utils.IsColumnTypesMatching(lpcol, rpcol))
                 {
-                    errmsg = "Primary key column " + lpcol.ObjectName.ToString() + " in the left database table\r\n" +
+                    errmsg = $"Primary key column {lpcol.ObjectName} in the left database table\r\n" +
                         "has a different type than the one in the right database table.";
                     return false;
                 }
                 if (!lpcol.ObjectName.Equals(rpcol.ObjectName))
                 {
-                    errmsg = "Primary key columns at index " + i + " have different names.";
+                    errmsg = $"Primary key columns at index {i} have different names.";
                     return false;
                 }
             } // for
@@ -1297,6 +1298,17 @@ namespace SQLiteTurbo
 
             return false;
         }
+
+		public static bool ConvertStringToBoolean(string boolValue)
+		{
+			var trueStrings = new List<String> { "1", "y", "yes", "true", "on", "j", "ja", "wahr" };
+			var falseStrings = new List<String> { "", "0", "n", "no", "false", "off", "n", "nein", "falsch" };
+
+			if (trueStrings.Any(s => s.Equals(boolValue, StringComparison.OrdinalIgnoreCase))) { return true; }
+			if (falseStrings.Any(s => s.Equals(boolValue, StringComparison.OrdinalIgnoreCase))) { return false; }
+
+			throw new FormatException($"Converting '{boolValue}' to Boolean failed!");
+		}
 
         #region Private Methods
         private static void PrepareConverters()

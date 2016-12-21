@@ -23,12 +23,17 @@ namespace SQLiteTurbo
     /// </summary>
     public class TableChanges : IDisposable
     {
-        #region Public Constants
-        /// <summary>
-        /// This is the name, in the difference database, of the table that contains
-        /// all the differences that refer to rows that exist only in the left database.
-        /// </summary>
-        public const string EXISTS_IN_LEFT_TABLE_NAME = "exists_in_left";
+		#region Public Constants
+		/// <summary>
+		/// This is the name, in the difference database, of the table that contains
+		/// all the differences that refer to rows that exist only in the left database.
+		/// </summary>
+		public const string EXISTS_IN_LEFT_OR_RIGHT_TABLE_NAME = "exists_in_left_or_right";
+		/// <summary>
+		/// This is the name, in the difference database, of the table that contains
+		/// all the differences that refer to rows that exist only in the left database.
+		/// </summary>
+		public const string EXISTS_IN_LEFT_TABLE_NAME = "exists_in_left";
 
         /// <summary>
         /// This is the name, in the differences database, of the table that contains
@@ -124,6 +129,7 @@ namespace SQLiteTurbo
             _addExistsInLeft = CreateAddCommand(EXISTS_IN_LEFT_TABLE_NAME);
             _addExistsInRight = CreateAddCommand(EXISTS_IN_RIGHT_TABLE_NAME);
             _addSame = CreateAddCommand(SAME_ROWS_TABLE_NAME);
+			_addBoth = CreateAddCommand(EXISTS_IN_LEFT_OR_RIGHT_TABLE_NAME);
 
             // Add to the active change files
             lock (_activeChanges)
@@ -135,7 +141,7 @@ namespace SQLiteTurbo
         /// </summary>
         ~TableChanges()
         {
-            Dispose(false);
+			Dispose(false);
         }
         #endregion
 
@@ -590,7 +596,7 @@ namespace SQLiteTurbo
                     tx.Rollback();
                     throw;
                 } // catch
-            } // using
+			} // using
         }
 
         /// <summary>
@@ -832,7 +838,7 @@ namespace SQLiteTurbo
                     RollbackUpdate();
                     throw;
                 } // catch
-            } // using
+			} // using
 
             // Invalidate the internal cache
             _cache.Clear();
@@ -886,7 +892,7 @@ namespace SQLiteTurbo
                     if (exists == 1)
                         return index;
                 } // for
-            } // using
+			} // using
 
             return -1;
         }
@@ -1013,7 +1019,7 @@ namespace SQLiteTurbo
                 }
 
                 fromtx.Commit();
-            } // using
+			} // using
 
             // Invalidate the internal cache
             _cache.Clear();
@@ -1043,7 +1049,8 @@ namespace SQLiteTurbo
                         {
                             SQLiteConnectionStringBuilder sb = new SQLiteConnectionStringBuilder(_main.ConnectionString);
                             string fpath = sb.DataSource;
-                            _main.Close();
+							_main.Close();
+							_main.Dispose();
                             _main = null;
                             if (!_inmemory)
                                 File.Delete(fpath);
@@ -1218,8 +1225,8 @@ namespace SQLiteTurbo
                 conn.Open();
                 SQLiteCommand cmd = new SQLiteCommand("SELECT COUNT(*) FROM " + tableName, conn);
                 long count = (long)cmd.ExecuteScalar();
-                return count;
-            } // using
+				return count;				
+			} // using
         }
 
         /// <summary>
@@ -1358,17 +1365,21 @@ namespace SQLiteTurbo
             }
 
             // Prepare the INSERT command
-            SQLiteCommand insert = new SQLiteCommand("INSERT INTO " + _tableName.ToString() + " (" +
-                Utils.BuildColumnsString(common, false) + ") VALUES (" +
-                Utils.BuildColumnParametersString(common) + "); select last_insert_rowid()",
+            SQLiteCommand insert = new SQLiteCommand(
+				$@"
+				INSERT INTO {_tableName}
+					({Utils.BuildColumnsString(common, false)})
+				VALUES
+					({Utils.BuildColumnParametersString(common)});
+				SELECT last_insert_rowid()
+				",
                 totx.Connection, totx);
             Utils.AddCommandColumnParameters(insert, common);
 
             // Prepare the UPDATE command
 
             // Prepare the DELETE command
-            SQLiteCommand del = new SQLiteCommand("DELETE FROM " + _tableName.ToString() +
-                " WHERE RowID = @rowId", totx.Connection, totx);
+            SQLiteCommand del = new SQLiteCommand($"DELETE FROM {_tableName} WHERE RowID = @rowId", totx.Connection, totx);
             del.Parameters.Add("@rowId", DbType.Int64);
 
             // There are 3 scenarios that need to be dealt with:
@@ -1521,8 +1532,7 @@ namespace SQLiteTurbo
                     {
                         BlobProgressHandler bph = new BlobProgressHandler(delegate(int bytesRead, int totalBytes, ref bool cancel)
                         {
-                            if (handler != null)
-                                handler(-1, -1, blobName, bytesRead, totalBytes, ref cancel);
+							handler?.Invoke(-1, -1, blobName, bytesRead, totalBytes, ref cancel);
                         });
 
                         brw.CopyBlob(leftToRight ? _rightdb : _leftdb, 
@@ -1620,8 +1630,8 @@ namespace SQLiteTurbo
                         value = DBNull.Value;
                     }
                 }
-                   
-                insert.Parameters[pname].Value = value;
+
+				Utils.AssignParameterValue(insert.Parameters[pname], value);
             } // for
 
             // Execute the insertion and get the ROWID of the inserted row.
@@ -1729,7 +1739,7 @@ namespace SQLiteTurbo
                         if (isLeft)
                         {
                             item.LeftFields = new object[reader.FieldCount];
-                            reader.GetValues(item.LeftFields);
+							reader.GetValues().CopyTo(item.LeftFields, 0);
 
                             if (_leftColNames == null)
                             {
@@ -1751,9 +1761,9 @@ namespace SQLiteTurbo
                         else
                         {
                             item.RightFields = new object[reader.FieldCount];
-                            reader.GetValues(item.RightFields);
+							reader.GetValues().CopyTo(item.RightFields, 0);
 
-                            if (_rightColNames == null)
+							if (_rightColNames == null)
                             {
                                 _rightColNames = new string[reader.FieldCount];
                                 for (int i = 0; i < _rightColNames.Length; i++)
@@ -2045,6 +2055,7 @@ namespace SQLiteTurbo
         private SQLiteCommand _addDifferent;
         private SQLiteCommand _addExistsInLeft;
         private SQLiteCommand _addExistsInRight;
+		private SQLiteCommand _addBoth;
 
         private Dictionary<string, int> _leftFieldIndexes = null;
         private Dictionary<string, int> _rightFieldIndexes = null;

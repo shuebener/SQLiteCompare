@@ -34,8 +34,7 @@ namespace SQLiteTurbo
             // Configure log4net
             BasicConfigurator.Configure();
 
-            AppDomain.CurrentDomain.UnhandledException +=
-                new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
             Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
 
             // Issue a log message that contains the version of the application.

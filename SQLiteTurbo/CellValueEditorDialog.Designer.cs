@@ -283,7 +283,7 @@ namespace SQLiteTurbo
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.ucHexEditor.BytesPerLine = 10;
             this.ucHexEditor.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ucHexEditor.LineInfoForeColor = System.Drawing.Color.Gray;
+            this.ucHexEditor.InfoForeColor = System.Drawing.Color.Gray;
             this.ucHexEditor.LineInfoVisible = true;
             this.ucHexEditor.Location = new System.Drawing.Point(15, 33);
             this.ucHexEditor.Name = "ucHexEditor";

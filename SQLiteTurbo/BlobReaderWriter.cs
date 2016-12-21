@@ -26,10 +26,10 @@ namespace SQLiteTurbo
         {
             // Form a connection to the database file
             if (readOnly)
-                _errorCode = sqlite3_open_v2(dbpath, ref _conn1, SQLITE_OPEN_READONLY, null);
+                _errorCode = (SQLiteErrorCode)sqlite3_open_v2(dbpath, ref _conn1, SQLITE_OPEN_READONLY, null);
             else
-                _errorCode = sqlite3_open(dbpath, ref _conn1);
-            if (_errorCode > 0)
+                _errorCode = (SQLiteErrorCode)sqlite3_open(dbpath, ref _conn1);
+            if (_errorCode > SQLiteErrorCode.Ok)
                 throw new SQLiteException(_errorCode, "can't open file: " + dbpath);
         }
 
@@ -42,11 +42,11 @@ namespace SQLiteTurbo
         public BlobReaderWriter(string dbpath1, string dbpath2)
         {
             // Form read-only connections to the database
-            _errorCode = sqlite3_open_v2(dbpath1, ref _conn1, SQLITE_OPEN_READONLY, null);
-            if (_errorCode > 0)
+            _errorCode = (SQLiteErrorCode)sqlite3_open_v2(dbpath1, ref _conn1, SQLITE_OPEN_READONLY, null);
+            if (_errorCode > SQLiteErrorCode.Ok)
                 throw new SQLiteException(_errorCode, "can't open file: " + dbpath1);
-            _errorCode = sqlite3_open_v2(dbpath2, ref _conn2, SQLITE_OPEN_READONLY, null);
-            if (_errorCode > 0)
+            _errorCode = (SQLiteErrorCode)sqlite3_open_v2(dbpath2, ref _conn2, SQLITE_OPEN_READONLY, null);
+            if (_errorCode > SQLiteErrorCode.Ok)
                 throw new SQLiteException(_errorCode, "can't open file: " + dbpath2);
         }
 
@@ -82,8 +82,8 @@ namespace SQLiteTurbo
             // Open the BLOB handle and decide if the BLOB needs zeroing.
             _blob1 = IntPtr.Zero;
             bool needsZeroing = false;
-            _errorCode = sqlite3_blob_open(_conn1, "main", tableName, columnName, rowId, 1, ref _blob1);
-            if (_errorCode > 0)
+            _errorCode = (SQLiteErrorCode)sqlite3_blob_open(_conn1, "main", tableName, columnName, rowId, 1, ref _blob1);
+            if (_errorCode > SQLiteErrorCode.Ok)
             {
                 _blob1 = IntPtr.Zero;
                 needsZeroing = true;
@@ -104,35 +104,35 @@ namespace SQLiteTurbo
                 // Close the BLOB handle if necessary
                 if (_blob1 != IntPtr.Zero)
                 {
-                    _errorCode = sqlite3_blob_close(_blob1);
+                    _errorCode = (SQLiteErrorCode)sqlite3_blob_close(_blob1);
                     _blob1 = IntPtr.Zero;
-                    if (_errorCode > 0)
+                    if (_errorCode > SQLiteErrorCode.Ok)
                         throw new SQLiteException(_errorCode, "can't close BLOB handle");
                 }
 
                 // Prepare SQL statement for zeroing the BLOB field in the correct size for the BLOB
                 // length we want to write to it.
-                _errorCode = sqlite3_prepare_v2(_conn1, "UPDATE " + SQLiteParser.Utils.QuoteIfNeeded(tableName) + 
+                _errorCode = (SQLiteErrorCode)sqlite3_prepare_v2(_conn1, "UPDATE " + SQLiteParser.Utils.QuoteIfNeeded(tableName) + 
                     " SET " + SQLiteParser.Utils.QuoteIfNeeded(columnName) +
                     " = @blob WHERE RowID = @rowid", -1, ref stmt, ref tail);
-                if (_errorCode > 0)
+                if (_errorCode > SQLiteErrorCode.Ok)
                     throw new SQLiteException(_errorCode, "sqlite3_prepare_v2 failed");
 
                 try
                 {
                     // Bind the BLOB parameter
-                    _errorCode = sqlite3_bind_zeroblob(stmt, 1, (int)len);
-                    if (_errorCode > 0)
+                    _errorCode = (SQLiteErrorCode)sqlite3_bind_zeroblob(stmt, 1, (int)len);
+                    if (_errorCode > SQLiteErrorCode.Ok)
                         throw new SQLiteException(_errorCode, "failed to bind zero-blob");
 
                     // Bind the RowID parameter
-                    _errorCode = sqlite3_bind_int64(stmt, 2, rowId);
-                    if (_errorCode > 0)
+                    _errorCode = (SQLiteErrorCode)sqlite3_bind_int64(stmt, 2, rowId);
+                    if (_errorCode > SQLiteErrorCode.Ok)
                         throw new SQLiteException(_errorCode, "failed to bind rowid");
 
                     // Execute the prepared statement
-                    _errorCode = sqlite3_step(stmt);
-                    if (_errorCode > 0 && _errorCode < 100)
+                    _errorCode = (SQLiteErrorCode)sqlite3_step(stmt);
+                    if (_errorCode > SQLiteErrorCode.Ok && _errorCode < SQLiteErrorCode.Row)
                         throw new SQLiteException(_errorCode, "failed to execute zeroblob command");
                 }
                 finally
@@ -150,8 +150,8 @@ namespace SQLiteTurbo
 
                 // Open the BLOB handle
                 _blob1 = IntPtr.Zero;
-                _errorCode = sqlite3_blob_open(_conn1, "main", tableName, columnName, rowId, 1, ref _blob1);
-                if (_errorCode > 0)
+                _errorCode = (SQLiteErrorCode)sqlite3_blob_open(_conn1, "main", tableName, columnName, rowId, 1, ref _blob1);
+                if (_errorCode > SQLiteErrorCode.Ok)
                     throw new SQLiteException(_errorCode, "sqlite3_blob_open failed");
             } // if
 
@@ -173,8 +173,8 @@ namespace SQLiteTurbo
                         throw new UserCancellationException();
 
                     // Write the new chunk to the BLOB
-                    _errorCode = sqlite3_blob_write(_blob1, _buffer1, nbytes, offset);
-                    if (_errorCode > 0)
+                    _errorCode = (SQLiteErrorCode)sqlite3_blob_write(_blob1, _buffer1, nbytes, offset);
+                    if (_errorCode > SQLiteErrorCode.Ok)
                         throw new SQLiteException(_errorCode, "sqlite3_blob_write failed");
 
                     offset += nbytes;
@@ -222,8 +222,8 @@ namespace SQLiteTurbo
             columnName = SQLiteParser.Utils.Chop(columnName);
 
             // Open the BLOB handle
-            _errorCode = sqlite3_blob_open(_conn1, "main", tableName, columnName, rowId, 0, ref _blob1);
-            if (_errorCode > 0)
+            _errorCode = (SQLiteErrorCode)sqlite3_blob_open(_conn1, "main", tableName, columnName, rowId, 0, ref _blob1);
+            if (_errorCode > SQLiteErrorCode.Ok)
             {
                 // Sometimes - the database contains a non-BLOB object in a column that is declared a BLOB.
                 // IN such cases - the call to sqlite3_blob_open will fail. When this happens we'll deal
@@ -232,23 +232,23 @@ namespace SQLiteTurbo
                 IntPtr stmt = IntPtr.Zero;
                 IntPtr tail = IntPtr.Zero;
 
-                _errorCode = sqlite3_prepare_v2(_conn1, "SELECT "+
+                _errorCode = (SQLiteErrorCode)sqlite3_prepare_v2(_conn1, "SELECT "+
                     SQLiteParser.Utils.QuoteIfNeeded(columnName)+" FROM " + 
                     SQLiteParser.Utils.QuoteIfNeeded(tableName) + 
                     " WHERE RowID = @rowid", -1, ref stmt, ref tail);
-                if (_errorCode > 0)
+                if (_errorCode > SQLiteErrorCode.Ok)
                     throw new SQLiteException(_errorCode, "failed to prepare SELECT statement");
 
                 try
                 {
                     // Bind the RowID parameter
-                    _errorCode = sqlite3_bind_int64(stmt, 1, rowId);
-                    if (_errorCode > 0)
+                    _errorCode = (SQLiteErrorCode)sqlite3_bind_int64(stmt, 1, rowId);
+                    if (_errorCode > SQLiteErrorCode.Ok)
                         throw new SQLiteException(_errorCode, "failed to bind rowid");
 
                     // Execute the prepared statement
-                    _errorCode = sqlite3_step(stmt);
-                    if (_errorCode > 0 && _errorCode < 100)
+                    _errorCode = (SQLiteErrorCode)sqlite3_step(stmt);
+                    if (_errorCode > SQLiteErrorCode.Ok && _errorCode < SQLiteErrorCode.Row)
                         throw new SQLiteException(_errorCode, "failed to execute SELECT command");                    
 
                     string txt = sqlite3_column_text16(stmt, 0);
@@ -277,8 +277,8 @@ namespace SQLiteTurbo
                 while (count > 0)
                 {
                     int toread = (count > PAGESIZE ? PAGESIZE : count);
-                    _errorCode = sqlite3_blob_read(_blob1, _buffer1, toread, offset);
-                    if (_errorCode > 0)
+                    _errorCode = (SQLiteErrorCode)sqlite3_blob_read(_blob1, _buffer1, toread, offset);
+                    if (_errorCode > SQLiteErrorCode.Ok)
                         throw new SQLiteException(_errorCode, "sqlite3_blob_read failed");
 
                     bool cancel = false;
@@ -402,23 +402,23 @@ namespace SQLiteTurbo
                 throw new InvalidOperationException("You need to use a non-dual database constructor");
 
             // Open conncetion to the target database as read-write
-            _errorCode = sqlite3_open(targetdb, ref _conn2);
-            if (_errorCode > 0)
+            _errorCode = (SQLiteErrorCode)sqlite3_open(targetdb, ref _conn2);
+            if (_errorCode > SQLiteErrorCode.Ok)
                 throw new SQLiteException(_errorCode, "can't open file: " + targetdb);
 
             try
             {
                 // Open source BLOB handle and compute its size
-                _errorCode = sqlite3_blob_open(_conn1, "main", tableName, columnName, fromRowId, 0, ref _blob1);
-                if (_errorCode > 0)
+                _errorCode = (SQLiteErrorCode)sqlite3_blob_open(_conn1, "main", tableName, columnName, fromRowId, 0, ref _blob1);
+                if (_errorCode > SQLiteErrorCode.Ok)
                     throw new SQLiteException(_errorCode, "failed to open BLOB handle");
                 int count1 = sqlite3_blob_bytes(_blob1);
 
                 bool needsResizing = false;
 
                 // Open target BLOB handle and check if it needs to be resized first
-                _errorCode = sqlite3_blob_open(_conn2, "main", tableName, columnName, toRowId, 1, ref _blob2);
-                if (_errorCode > 0)
+                _errorCode = (SQLiteErrorCode)sqlite3_blob_open(_conn2, "main", tableName, columnName, toRowId, 1, ref _blob2);
+                if (_errorCode > SQLiteErrorCode.Ok)
                     needsResizing = true;
                 else
                 {
@@ -437,36 +437,36 @@ namespace SQLiteTurbo
                     // Close the BLOB handle if necessary
                     if (_blob2 != IntPtr.Zero)
                     {
-                        _errorCode = sqlite3_blob_close(_blob2);
+                        _errorCode = (SQLiteErrorCode)sqlite3_blob_close(_blob2);
                         _blob2 = IntPtr.Zero;
-                        if (_errorCode > 0)
+                        if (_errorCode > SQLiteErrorCode.Ok)
                             throw new SQLiteException(_errorCode, "can't close BLOB handle");
                     }
 
                     // Prepare SQL statement for zeroing the BLOB field in the correct size for the BLOB
                     // length we want to write to it.
-                    _errorCode = sqlite3_prepare_v2(_conn2, "UPDATE " + 
+                    _errorCode = (SQLiteErrorCode)sqlite3_prepare_v2(_conn2, "UPDATE " + 
                         SQLiteParser.Utils.QuoteIfNeeded(tableName) + " SET " + 
                         SQLiteParser.Utils.QuoteIfNeeded(columnName) +
                         " = @blob WHERE RowID = @rowid", -1, ref stmt, ref tail);
-                    if (_errorCode > 0)
+                    if (_errorCode > SQLiteErrorCode.Ok)
                         throw new SQLiteException(_errorCode, "sqlite3_prepare_v2 failed");
 
                     try
                     {
                         // Bind the BLOB parameter
-                        _errorCode = sqlite3_bind_zeroblob(stmt, 1, count1);
-                        if (_errorCode > 0)
+                        _errorCode = (SQLiteErrorCode)sqlite3_bind_zeroblob(stmt, 1, count1);
+                        if (_errorCode > SQLiteErrorCode.Ok)
                             throw new SQLiteException(_errorCode, "failed to bind zero-blob");
 
                         // Bind the RowID parameter
-                        _errorCode = sqlite3_bind_int64(stmt, 2, toRowId);
-                        if (_errorCode > 0)
+                        _errorCode = (SQLiteErrorCode)sqlite3_bind_int64(stmt, 2, toRowId);
+                        if (_errorCode > SQLiteErrorCode.Ok)
                             throw new SQLiteException(_errorCode, "failed to bind rowid");
 
                         // Execute the prepared statement
-                        _errorCode = sqlite3_step(stmt);
-                        if (_errorCode > 0 && _errorCode < 100)
+                        _errorCode = (SQLiteErrorCode)sqlite3_step(stmt);
+                        if (_errorCode > SQLiteErrorCode.Ok && _errorCode < SQLiteErrorCode.Row)
                             throw new SQLiteException(_errorCode, "failed to execute zeroblob command");
                     }
                     finally
@@ -476,8 +476,8 @@ namespace SQLiteTurbo
                     } // catch
 
                     // Re-open the target BLOB field
-                    _errorCode = sqlite3_blob_open(_conn2, "main", tableName, columnName, toRowId, 1, ref _blob2);
-                    if (_errorCode > 0)
+                    _errorCode = (SQLiteErrorCode)sqlite3_blob_open(_conn2, "main", tableName, columnName, toRowId, 1, ref _blob2);
+                    if (_errorCode > SQLiteErrorCode.Ok)
                         throw new SQLiteException(_errorCode, "failed to re-open target BLOB handle");
                 } // if
 
@@ -488,13 +488,13 @@ namespace SQLiteTurbo
                     int toread = (count > PAGESIZE ? PAGESIZE : count);
 
                     // Read the BLOB data from the source database
-                    _errorCode = sqlite3_blob_read(_blob1, _buffer1, toread, offset);
-                    if (_errorCode > 0)
+                    _errorCode = (SQLiteErrorCode)sqlite3_blob_read(_blob1, _buffer1, toread, offset);
+                    if (_errorCode > SQLiteErrorCode.Ok)
                         throw new SQLiteException(_errorCode, "sqlite3_blob_read failed");
 
                     // Write it to the target database
-                    _errorCode = sqlite3_blob_write(_blob2, _buffer1, toread, offset);
-                    if (_errorCode > 0)
+                    _errorCode = (SQLiteErrorCode)sqlite3_blob_write(_blob2, _buffer1, toread, offset);
+                    if (_errorCode > SQLiteErrorCode.Ok)
                         throw new SQLiteException(_errorCode, "sqlite3_blob_read failed");
 
                     offset += toread;
@@ -563,13 +563,13 @@ namespace SQLiteTurbo
                 byte[] bbytes1 = null;
                 byte[] bbytes2 = null;
 
-                _errorCode = sqlite3_blob_open(_conn1, "main", tableName, columnName, rowid1, 0, ref _blob1);
-                if (_errorCode > 0)
+                _errorCode = (SQLiteErrorCode)sqlite3_blob_open(_conn1, "main", tableName, columnName, rowid1, 0, ref _blob1);
+                if (_errorCode > SQLiteErrorCode.Ok)
                 {
                     bbytes1 = GetFieldBytes(_conn1, tableName, columnName, rowid1);
                 }
-                _errorCode = sqlite3_blob_open(_conn2, "main", tableName, columnName, rowid2, 0, ref _blob2);
-                if (_errorCode > 0)
+                _errorCode = (SQLiteErrorCode)sqlite3_blob_open(_conn2, "main", tableName, columnName, rowid2, 0, ref _blob2);
+                if (_errorCode > SQLiteErrorCode.Ok)
                 {
                     bbytes2 = GetFieldBytes(_conn2, tableName, columnName, rowid2);
                 }
@@ -610,15 +610,15 @@ namespace SQLiteTurbo
 
                     if (bbytes1 == null)
                     {
-                        _errorCode = sqlite3_blob_read(_blob1, _buffer1, toread, offset);
-                        if (_errorCode > 0)
+                        _errorCode = (SQLiteErrorCode)sqlite3_blob_read(_blob1, _buffer1, toread, offset);
+                        if (_errorCode > SQLiteErrorCode.Ok)
                             throw new SQLiteException(_errorCode, "sqlite3_blob_read failed");
                     }
 
                     if (bbytes2 == null)
                     {
-                        _errorCode = sqlite3_blob_read(_blob2, _buffer2, toread, offset);
-                        if (_errorCode > 0)
+                        _errorCode = (SQLiteErrorCode)sqlite3_blob_read(_blob2, _buffer2, toread, offset);
+                        if (_errorCode > SQLiteErrorCode.Ok)
                             throw new SQLiteException(_errorCode, "sqlite3_blob_read failed");
                     }
 
@@ -750,23 +750,23 @@ namespace SQLiteTurbo
             IntPtr stmt = IntPtr.Zero;
             IntPtr tail = IntPtr.Zero;
 
-            _errorCode = sqlite3_prepare_v2(conn, "SELECT " +
+            _errorCode = (SQLiteErrorCode)sqlite3_prepare_v2(conn, "SELECT " +
                 SQLiteParser.Utils.QuoteIfNeeded(columnName) + " FROM " +
                 SQLiteParser.Utils.QuoteIfNeeded(tableName) +
                 " WHERE RowID = @rowid", -1, ref stmt, ref tail);
-            if (_errorCode > 0)
+            if (_errorCode > SQLiteErrorCode.Ok)
                 throw new SQLiteException(_errorCode, "failed to prepare SELECT statement");
 
             try
             {
                 // Bind the RowID parameter
-                _errorCode = sqlite3_bind_int64(stmt, 1, rowId);
-                if (_errorCode > 0)
+                _errorCode = (SQLiteErrorCode)sqlite3_bind_int64(stmt, 1, rowId);
+                if (_errorCode > SQLiteErrorCode.Ok)
                     throw new SQLiteException(_errorCode, "failed to bind rowid");
 
                 // Execute the prepared statement
-                _errorCode = sqlite3_step(stmt);
-                if (_errorCode > 0 && _errorCode < 100)
+                _errorCode = (SQLiteErrorCode)sqlite3_step(stmt);
+                if (_errorCode > SQLiteErrorCode.Ok && _errorCode < SQLiteErrorCode.Row)
                     throw new SQLiteException(_errorCode, "failed to execute SELECT command");
 
                 byte[] tmp = null;
@@ -865,7 +865,7 @@ namespace SQLiteTurbo
         private IntPtr _blob1 = IntPtr.Zero;
         private IntPtr _conn2 = IntPtr.Zero;
         private IntPtr _blob2 = IntPtr.Zero;
-        private int _errorCode = 0;
+        private SQLiteErrorCode _errorCode = SQLiteErrorCode.Ok;
         private bool _disposed = false;
         private byte[] _buffer1 = new byte[PAGESIZE];
         private byte[] _buffer2 = new byte[PAGESIZE];

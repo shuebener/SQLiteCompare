@@ -157,15 +157,28 @@ namespace SQLiteTurbo
             tbcViews.SelectedTab = tbpData;
         }
 
+		private void btnLeftOrRight_Click(object sender, EventArgs e)
+		{
+			if (_nested)
+				return;
 
-        private void btnExistsInLeft_Click(object sender, EventArgs e)
+			_nested = true;
+			btnLeftOrRight.Checked = true;
+			btnExistsInLeft.Checked = btnExistsInRight.Checked = btnDifferent.Checked = btnSame.Checked = false;
+			_nested = false;
+
+			// Request the table diff control to show only rows that exist in the right database table
+			UpdateDataTab();
+		}
+
+		private void btnExistsInLeft_Click(object sender, EventArgs e)
         {
             if (_nested)
                 return;
 
             _nested = true;
             btnExistsInLeft.Checked = true;
-            btnExistsInRight.Checked = btnDifferent.Checked = btnSame.Checked = false;
+            btnExistsInRight.Checked = btnDifferent.Checked = btnSame.Checked = btnLeftOrRight.Checked = false;
             _nested = false;
 
             // Request the table diff control to show only rows that exist in the left database table
@@ -180,7 +193,7 @@ namespace SQLiteTurbo
 
             _nested = true;
             btnExistsInRight.Checked = true;
-            btnExistsInLeft.Checked = btnDifferent.Checked = btnSame.Checked = false;
+            btnExistsInLeft.Checked = btnDifferent.Checked = btnSame.Checked = btnLeftOrRight.Checked = false;
             _nested = false;
 
             // Request the table diff control to show only rows that exist in the right database table
@@ -194,7 +207,7 @@ namespace SQLiteTurbo
 
             _nested = true;
             btnDifferent.Checked = true;
-            btnExistsInLeft.Checked = btnExistsInRight.Checked = btnSame.Checked = false;
+            btnExistsInLeft.Checked = btnExistsInRight.Checked = btnSame.Checked = btnLeftOrRight.Checked = false;
             _nested = false;
 
             // Request the table diff control to show only rows that are different in both databases
@@ -208,7 +221,7 @@ namespace SQLiteTurbo
 
             _nested = true;
             btnSame.Checked = true;
-            btnExistsInLeft.Checked = btnExistsInRight.Checked = btnDifferent.Checked = false;
+            btnExistsInLeft.Checked = btnExistsInRight.Checked = btnDifferent.Checked = btnLeftOrRight.Checked = false;
             _nested = false;
 
             // Request the table diff control to show only rows that are the same in both databases
@@ -339,6 +352,7 @@ namespace SQLiteTurbo
             long rightCount = _tableChanges.GetTotalChangesCount(new string[] { TableChanges.EXISTS_IN_RIGHT_TABLE_NAME });
             long diffCount = _tableChanges.GetTotalChangesCount(new string[] { TableChanges.DIFFERENT_ROWS_TABLE_NAME });
             long sameCount = _tableChanges.GetTotalChangesCount(new string[] { TableChanges.SAME_ROWS_TABLE_NAME });
+			long bothCount = _tableChanges.GetTotalChangesCount(new string[] { TableChanges.DIFFERENT_ROWS_TABLE_NAME, TableChanges.SAME_ROWS_TABLE_NAME });
 
             string qm = string.Empty;
             if (!precise)
@@ -352,11 +366,12 @@ namespace SQLiteTurbo
                 btnRefreshComparison.BackColor = Color.Transparent;
             }
 
-            btnExistsInLeft.Text = "(" + leftCount + qm+ ")";
-            btnExistsInRight.Text = "(" + rightCount + qm+")";
-            btnDifferent.Text = "(" + diffCount + qm+")";
-            btnSame.Text = "(" + sameCount + qm+")";
-        }
+            btnExistsInLeft.Text = $"({leftCount}{qm})";
+            btnExistsInRight.Text = $"({rightCount}{qm})";
+            btnDifferent.Text = $"({diffCount}{qm})";
+            btnSame.Text = $"({sameCount}{qm})";
+			btnLeftOrRight.Text = $"({bothCount}{qm})";
+		}
 
         private void StartTableUpdate(string leftSQL, string rightSQL, bool skipNullRows)
         {
@@ -437,7 +452,10 @@ namespace SQLiteTurbo
                 return TableChanges.EXISTS_IN_LEFT_TABLE_NAME;
             if (btnExistsInRight.Checked)
                 return TableChanges.EXISTS_IN_RIGHT_TABLE_NAME;
-            throw new InvalidOperationException();
+			if (btnLeftOrRight.Checked)
+				return TableChanges.EXISTS_IN_LEFT_OR_RIGHT_TABLE_NAME;
+
+			throw new InvalidOperationException();
         }
 
         private string FormatTitle(SchemaComparisonItem item)
@@ -473,6 +491,7 @@ namespace SQLiteTurbo
         private Font _italic;
         private Regex _nlrx = new Regex("\r\n|\n");
         private ILog _log = LogManager.GetLogger(typeof(TwoWayCompareEditDialog));
-        #endregion
-    }
+		#endregion
+
+	}
 }

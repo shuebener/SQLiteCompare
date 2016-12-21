@@ -563,11 +563,10 @@ namespace SQLiteTurbo
                         if (dp.HasChanges())
                             dp.ApplyChanges();
                         dp.Dispose();
-                            
-                        fpath = dp.FilePath;
-                        FileInfo fi = new FileInfo(fpath);
-                        blobLength = fi.Length;
-                    }
+
+						blobLength = dp.Length;
+
+					}
                     else
                         throw new InvalidOperationException("cell editor returned unexpected value");
 

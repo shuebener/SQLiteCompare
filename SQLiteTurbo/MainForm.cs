@@ -181,23 +181,6 @@ namespace SQLiteTurbo
             dlg.ShowDialog(this);
         }
 
-        private void pbxFeedback_MouseDown(object sender, MouseEventArgs e)
-        {
-            pbxFeedback.Image = Properties.Resources.pressed_feedback_button;
-        }
-
-        private void pbxFeedback_MouseUp(object sender, MouseEventArgs e)
-        {
-            pbxFeedback.Image = Properties.Resources.normal_feedback_button;
-            if (pbxFeedback.ClientRectangle.Contains(e.Location))
-            {
-                pbxFeedback.Visible = false;
-                FeedbackDialog dlg = new FeedbackDialog();
-                dlg.ShowDialog(this);
-                pbxFeedback.Visible = true;
-            }
-        }
-
         private void btnExportDataDifferences_Click(object sender, EventArgs e)
         {
             _schemaView.ExportDataDifferences();
@@ -276,7 +259,7 @@ namespace SQLiteTurbo
             _results = null;
 
             UpdateState();
-        }
+		}
 
         private void UpdateState()
         {
@@ -289,8 +272,7 @@ namespace SQLiteTurbo
             mniCopyFromRightDB.Enabled = _schemaView != null && _schemaView.CanCopyFromRightDB();
             mniEditSelection.Enabled = _schemaView != null && _schemaView.CanEditSelectedDifference();
             mniGotoNextDifference.Enabled = _schemaView != null && _schemaView.HasNextDiff();
-            mniGotoPreviousDifference.Enabled = _schemaView != null && _schemaView.HasPreviousDiff();
-            pbxFeedback.Visible = _schemaView == null;            
+            mniGotoPreviousDifference.Enabled = _schemaView != null && _schemaView.HasPreviousDiff();        
 
             #region Allow change script generation only to commercial/evaluation users
 
