@@ -503,8 +503,9 @@ namespace SQLiteTurbo
             // in order to avoid loading the BLOB field into main memory.
             if (Utils.GetDbType(column.ColumnType) == DbType.Binary)
             {
-                long v = (long)value;
-                if (v == 0) // means NULL
+                //long v = (long)value;
+                //if (v == 0) // means NULL
+                if (value.Equals("0"))
                     value = DBNull.Value;
             }
 
@@ -815,8 +816,9 @@ namespace SQLiteTurbo
                     }
                     else if (Utils.GetDbType(col.ColumnType) == DbType.Binary)
                     {
-                        long v = (long)fval;
-                        if (v == 1)
+                        //long v = (long)fval;
+                        //if (v == 1)
+                        if (fval.Equals("1"))
                             row.Cells[i].Value = "BLOB";
                         else
                             row.Cells[i].Value = "NULL";
