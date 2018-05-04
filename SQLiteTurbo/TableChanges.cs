@@ -1047,10 +1047,10 @@ namespace SQLiteTurbo
                     {
                         try
                         {
-                            SQLiteConnectionStringBuilder sb = new SQLiteConnectionStringBuilder(_main.ConnectionString);
-                            string fpath = sb.DataSource;
-							_main.Close();
-							_main.Dispose();
+                            //SQLiteConnectionStringBuilder sb = new SQLiteConnectionStringBuilder(_main.ConnectionString);
+                            string fpath = _main.DataSource;
+                            _main.Close();
+                            _main.Dispose();
                             _main = null;
                             if (!_inmemory)
                                 File.Delete(fpath);

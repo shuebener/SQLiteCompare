@@ -503,8 +503,9 @@ namespace SQLiteTurbo
             // in order to avoid loading the BLOB field into main memory.
             if (Utils.GetDbType(column.ColumnType) == DbType.Binary)
             {
-                long v = (long)value;
-                if (v == 0) // means NULL
+                //long v = (long)value;
+                //if (v == 0) // means NULL
+                if (value.Equals("0"))
                     value = DBNull.Value;
             }
 
@@ -544,6 +545,7 @@ namespace SQLiteTurbo
             {
                 if (otherBlob != null && (citem.Result == ComparisonResult.Same || citem.Result == ComparisonResult.DifferentData))
                 {
+                    /*
                     if (otherBlob is long)
                     {
                         // Another adjustment for the other BLOB field value
@@ -551,11 +553,19 @@ namespace SQLiteTurbo
                         if (ob == 0) // means NULL blob field
                             otherBlob = DBNull.Value;
                     }
+                    */
+                    if (Utils.GetDbType(column.ColumnType) == DbType.Binary)
+                    {
+                        if (otherBlob.Equals("0"))
+                            otherBlob = DBNull.Value;
+                    }
+
                 }
 
                 if (value != DBNull.Value)
                 {
-                    string fpath = null;
+                    //string fpath = null;
+                    string fpath = Configuration.TempBlobFilePath;
                     long blobLength = 0;
                     if (value is Be.Windows.Forms.DynamicFileByteProvider)
                     {
@@ -598,7 +608,8 @@ namespace SQLiteTurbo
 
                     // Update the table change item with an indication that the BLOB field that was just saved
                     // is not null.
-                    citem.SetField(column.ObjectName.ToString(), !right, (long)1);
+                    //citem.SetField(column.ObjectName.ToString(), !right, (long)1);
+                    citem.SetField(column.ObjectName.ToString(), !right, "1");
 
                     if (otherBlob != null && (citem.Result == ComparisonResult.DifferentData || citem.Result == ComparisonResult.Same))
                     {
@@ -815,8 +826,9 @@ namespace SQLiteTurbo
                     }
                     else if (Utils.GetDbType(col.ColumnType) == DbType.Binary)
                     {
-                        long v = (long)fval;
-                        if (v == 1)
+                        //long v = (long)fval;
+                        //if (v == 1)
+                        if (fval.Equals("1"))
                             row.Cells[i].Value = "BLOB";
                         else
                             row.Cells[i].Value = "NULL";
