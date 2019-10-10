@@ -40,7 +40,7 @@ namespace SQLiteParser
             if (!RefCompare.CompareMany(_when, dst._when, _then, dst._then))
                 return false;
 
-            return base.Equals(obj);
+            return true;
         }
 
         public override string ToString()
