@@ -1,5 +1,6 @@
 using System;
 using System.Threading;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +22,24 @@ namespace SQLiteTurbo
         public MainForm()
         {
             InitializeComponent();
+            var arguments = new ArrayList(Environment.GetCommandLineArgs());
+            var ctype = ComparisonType.CompareSchemaAndData;
+            var compareBlobFields = false;
+            int i;
+            if ((i = arguments.IndexOf("/CompareSchemaOnly", 1)) != -1)
+            {
+                arguments.RemoveAt(i);
+                ctype = ComparisonType.CompareSchemaOnly;
+            }
+            if ((i = arguments.IndexOf("/CompareBlobFields", 1)) != -1)
+            {
+                arguments.RemoveAt(i);
+                compareBlobFields = true;
+            }
+            if (arguments.Count == 3)
+            {
+                _compareParams = new CompareParams((string)arguments[1], (string)arguments[2], ctype, compareBlobFields);
+            }
         }
 
         #region Event Handlers
@@ -145,7 +164,11 @@ namespace SQLiteTurbo
 
             // The first time the software is ran - it should prompt the user if he wants to enable
             // checking for software updates upon system startup
-            if (Configuration.FirstTime)
+            if (_compareParams != null)
+            {
+                RefreshComparison(true);
+            }
+            else if (Configuration.FirstTime)
             {
                 Configuration.FirstTime = false;
 
